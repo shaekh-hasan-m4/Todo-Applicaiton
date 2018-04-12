@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Welcome Page</title>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
+	type="text/css" rel="stylesheet"></link>
+
+</head>
+<body>
+	<span th:include="/templates/navigation :: #navigationId"></span>
+	<div class="container">
+
+		<h1 th:text="'Welcome '+${name}"></h1>
+
+	
+
+	</div>
+
+	<script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"></script>
+</body>
+</html>
