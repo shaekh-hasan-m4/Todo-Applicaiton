@@ -40,6 +40,15 @@ public class TodoController {
 		binder.registerCustomEditor(Date.class,new CustomDateEditor(dateFormat, false));
 	}	
 	
+	
+	// Welcome Page
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage() {		
+		return "login";
+	}	
+	
+	
+	
 	// Retriving Username
  	private String retriveLoggedinUserName() {
 
@@ -85,7 +94,7 @@ public class TodoController {
 			model.addAttribute("date_format_error","date format is dd/MM/yyyy");
 			return "add-todo";
 		}
-	    redirectAttributes.addFlashAttribute("message", "Success");
+	    redirectAttributes.addFlashAttribute("message", "Successfully Added");
 	    redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 		todoService.addTodo(retriveLoggedinUserName(),todo.getDescription(), todo.getTargetDate(), false);
 		model.clear(); // for not letting any extra parameter
@@ -96,8 +105,10 @@ public class TodoController {
 		
 	//delete todo
 	@RequestMapping(value = "/deletetodo", method = RequestMethod.GET)
-	public String deleteTodo(ModelMap model,@RequestParam int id) {
+	public String deleteTodo(ModelMap model,@RequestParam int id,RedirectAttributes redirectAttributes) {
 		todoService.deleteTodo(id);
+	    redirectAttributes.addFlashAttribute("message", "Successfully Deleted");
+	    redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 		model.clear();
 		return "redirect:/listtodo";
 	}	
@@ -114,11 +125,15 @@ public class TodoController {
 	
 	//update todo
 	@RequestMapping(value = "/updatetodo", method = RequestMethod.POST)
-	public String updateTodo(ModelMap model,@Valid Todo todo, BindingResult result) {
+	public String updateTodo(ModelMap model,@Valid Todo todo, BindingResult result,RedirectAttributes redirectAttributes) {
+	    redirectAttributes.addFlashAttribute("message", "Failed");
+	    redirectAttributes.addFlashAttribute("alertClass", "alert-danger");		
 		
 		if(result.hasErrors()){
 			return "update-todo";
 		}
+	    redirectAttributes.addFlashAttribute("message", "Successfully Updated");
+	    redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 		model.clear();
 		todoService.updateTodo(todo);
 		return "redirect:/listtodo";
