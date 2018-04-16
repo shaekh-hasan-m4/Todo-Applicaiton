@@ -89,14 +89,14 @@ public class TodoController {
 	public String addTodo(ModelMap model,@Valid Todo todo, BindingResult result,RedirectAttributes redirectAttributes){
 	    redirectAttributes.addFlashAttribute("message", "Failed");
 	    redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
-	    
+	  
 		if(result.hasErrors()){
 			model.addAttribute("date_format_error","date format is dd/MM/yyyy");
 			return "add-todo";
 		}
 	    redirectAttributes.addFlashAttribute("message", "Successfully Added");
 	    redirectAttributes.addFlashAttribute("alertClass", "alert-success");
-		todoService.addTodo(retriveLoggedinUserName(),todo.getDescription(), todo.getTargetDate(), false);
+		todoService.addTodo(retriveLoggedinUserName(),todo.getDescription(), todo.getTargetDate(), todo.isDone());
 		model.clear(); // for not letting any extra parameter
 		return "redirect:/listtodo";
 	}		
@@ -120,7 +120,7 @@ public class TodoController {
 		model.clear();
 		model.addAttribute("todo",todo);
 		return "update-todo";
-	}	
+	}		
 	
 	
 	//update todo

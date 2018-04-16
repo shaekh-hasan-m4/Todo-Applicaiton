@@ -7,39 +7,43 @@
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
 	type="text/css" rel="stylesheet"></link>
-	
+
 
 </head>
 <body>
-<span th:include="/templates/navigation :: #navigationId"></span>
-<div class="container">
-	<h1>Add a todo</h1>
+	<span th:include="/templates/navigation :: #navigationId"></span>
+	<div class="container">
+		<h1>Add a todo</h1>
 
-	<form action="#" th:action="@{/addtodo/}" th:object="${todo}"
-		method="post">
-		<fieldset class="form-group">
-			<label>Description</label> <input type="text"
-				th:field="*{description}" class="form-control" required="required" />
-			<p class="text-warning" th:if="${#fields.hasErrors('description')}"
-				th:errors="*{description}"></p>
-		</fieldset>
+		<form action="#" th:action="@{/addtodo/}" th:object="${todo}"
+			method="post">
+			<fieldset class="form-group">
+				<label>Description</label> <input type="text"
+					th:field="*{description}" class="form-control" required="required" />
+				<p class="text-warning" th:if="${#fields.hasErrors('description')}"
+					th:errors="*{description}"></p>
+			</fieldset>
 
-		<fieldset class="form-group">
-			<label>Target Date</label> <input type="date"
-				th:field="*{targetDate}" class="form-control" required="required" />
-			<p class="text-warning" th:if="${#fields.hasErrors('targetDate')}"
-				th:errors="*{targetDate}"></p>
+			<fieldset class="form-group">
+				<label>Target Date</label> <input type="date"
+					th:field="*{targetDate}" class="form-control" required="required" />
+				<p class="text-warning" th:if="${#fields.hasErrors('targetDate')}"
+					th:errors="*{targetDate}"></p>
+			</fieldset>
+			
+			<fieldset class="form-check">
+				<input type="checkbox" class="form-check-input" id="defaultCheck2" th:field="*{Done}"/>
+				<label class="form-check-label" for="defaultCheck2">Is your work done?</label>
+			</fieldset>
 
-		</fieldset>
+			<p>
+				<input class="btn btn-success" type="submit" value="Submit" /> <input
+					class="btn btn-warning" type="reset" value="Reset" />
+			</p>
+		</form>
 
-		<p>
-			<input class="btn btn-success" type="submit" value="Submit" /> <input
-				class="btn btn-warning" type="reset" value="Reset" />
-		</p>
-	</form>
-	
 	</div>
-		<script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"></script>
 </body>
 </html>

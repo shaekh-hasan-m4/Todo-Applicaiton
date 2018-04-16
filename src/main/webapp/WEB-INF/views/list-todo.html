@@ -28,7 +28,8 @@
 				<td th:text="${todo.description}"></td>
 				<td th:text="${#dates.format(todo.targetDate, 'dd-MM-yyyy')}"></td>
 
-				<td th:text="${todo.Done}"></td>
+				<td th:text="${todo.Done} ? 'Yes' : 'No'"></td>
+				
 				<td><a onclick="return confirm('Do you want to Delete')" class="btn btn-danger"
 					th:href="@{/deletetodo(id=${todo.id})}">Delete</a></td>
 				<td><a class="btn btn-primary"
