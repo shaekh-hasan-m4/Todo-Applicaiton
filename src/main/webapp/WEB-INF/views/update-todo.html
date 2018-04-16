@@ -7,6 +7,21 @@
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
 	type="text/css" rel="stylesheet"></link>
+	
+	<script type="text/javascript">
+    function validateDateCheckbox() {
+        if (document.getElementById('dateCheckboxCheck').checked) {
+            document.getElementById("inputTargetDateId").removeAttribute("required");
+            document.getElementById("inputTargetDateId").setAttribute("readonly", "readonly");
+           
+        } else {   
+            document.getElementById("inputTargetDateId").removeAttribute("readonly");
+        	  document.getElementById("inputTargetDateId").setAttribute("required", "required");
+           
+        }
+    }
+    </script>
+    
 </head>
 <body>
 <span th:include="/templates/navigation :: #navigationId"></span>
@@ -26,13 +41,14 @@
 
 			<fieldset class="form-group">
 				<label>Target Date</label> <input type="date"
-					th:field="*{targetDate}" class="form-control" required="required" />
+					th:field="*{targetDate}" class="form-control" id="inputTargetDateId" readonly="*{Done}" required="required"/>
 				<p class="text-warning" th:if="${#fields.hasErrors('targetDate')}"
 					th:errors="*{targetDate}"></p>
 			</fieldset>
+			
 			<fieldset class="form-check">
-				<input type="checkbox" class="form-check-input" id="defaultCheck2" th:field="*{Done}"/>
-				<label class="form-check-label" for="defaultCheck2">Is your work done?</label>
+				<input type="checkbox" class="form-check-input" id="dateCheckboxCheck" th:field="*{Done}" onclick="validateDateCheckbox()"/>
+				<label class="form-check-label" for="dateCheckboxCheck">Is your work done?</label>
 			</fieldset>
 			<p>
 				<input class="btn btn-success" type="submit" value="Submit" /> <input

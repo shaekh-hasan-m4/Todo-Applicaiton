@@ -26,7 +26,7 @@
 			<tr th:each="todo : ${todoList}">
 				
 				<td th:text="${todo.description}"></td>
-				<td th:text="${#dates.format(todo.targetDate, 'dd-MM-yyyy')}"></td>
+				<td th:text="${todo.Done} ? '-/-/-' : ${#dates.format(todo.targetDate, 'dd-MM-yyyy')} "></td>
 
 				<td th:text="${todo.Done} ? 'Yes' : 'No'"></td>
 				
