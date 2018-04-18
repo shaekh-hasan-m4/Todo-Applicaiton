@@ -2,47 +2,56 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>List Of Todos</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
 	type="text/css" rel="stylesheet"></link>
 </head>
 <body>
-<span th:include="/templates/navigation :: #navigationId"></span>
-<div class="container">
+	<span th:include="/templates/navigation :: #navigationId"></span>
+	<div class="container">
 		<h1>Todo App Page</h1>
 		<p th:text="'My name is '+${name}+' and my todo list is:'"></p>
 
 		<table class="table table-striped">
 			<tr>
-			
+
 				<th>Description</th>
 				<th>Target Date</th>
 				<th>Is Complete?</th>
 				<th></th>
 				<th></th>
 			</tr>
-			<tr th:each="todo : ${todoList}">
-				
-				<td th:text="${todo.description}"></td>
-				<td th:text="${todo.Done} ? '-/-/-' : ${#dates.format(todo.targetDate, 'dd-MM-yyyy')} "></td>
+			<tbody>
+				<tr th:each="todo : ${todoList}" class="example">
 
-				<td th:text="${todo.Done} ? 'Yes' : 'No'"></td>
-				
-				<td><a onclick="return confirm('Do you want to Delete')" class="btn btn-danger"
-					th:href="@{/deletetodo(id=${todo.id})}">Delete</a></td>
-				<td><a class="btn btn-primary"
-					th:href="@{/updatetodo(id=${todo.id})}">Update</a></td>
-			</tr>
+					<td th:text="${todo.description}"></td>
+					<td
+						th:text="${todo.Done} ? '-/-/-' : ${#dates.format(todo.targetDate, 'dd-MM-yyyy')} "></td>
+
+					<td th:text="${todo.Done} ? 'Yes' : 'No'"></td>
+
+					<td><a onclick="return confirm('Do you want to Delete')"
+						class="btn btn-danger" th:href="@{/deletetodo(id=${todo.id})}">Delete</a></td>
+					<td><a class="btn btn-primary"
+						th:href="@{/updatetodo(id=${todo.id})}">Update</a></td>
+				</tr>
+			</tbody>
 		</table>
-		
+
 		<p>
 			<a class="btn btn-success" th:href="@{/addtodo}">Add a Todo</a>
 		</p>
-		<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
-		</div>
+		<div th:if="${message}" th:text="${message}"
+			th:class="${'alert ' + alertClass}" />
+	</div>
 	<script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"></script>
+
+	<script type="text/javascript">
+		$('tbody').sortable();
+	</script>
 </body>
 </html>

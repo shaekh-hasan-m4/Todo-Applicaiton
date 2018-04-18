@@ -40,6 +40,7 @@ public class TodoController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 
+	
 	// Welcome Page
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
@@ -71,6 +72,7 @@ public class TodoController {
 		return "list-todo";
 	}
 
+	
 	// add todo page
 	@RequestMapping(value = "/addtodo", method = RequestMethod.GET)
 	public String addTodoPage(Model model) {
@@ -139,8 +141,8 @@ public class TodoController {
 		model.clear();
 		todoService.updateTodo(todo);
 		return "redirect:/listtodo";
-	}
-
+	}	
+	
 	// logout
 	@RequestMapping(value = "/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
