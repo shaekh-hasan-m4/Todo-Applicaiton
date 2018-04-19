@@ -10,13 +10,15 @@
 	<context:component-scan base-package="com.shoron.service" />
 	<context:component-scan base-package="com.shoron.model" />
 	<context:component-scan base-package="com.shoron.security" />
-
+	
 
 
 	
 	<mvc:annotation-driven />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	
 	<mvc:resources mapping="/webjars/**" location="/webjars/" />
 
 

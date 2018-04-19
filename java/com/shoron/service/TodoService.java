@@ -20,7 +20,7 @@ public class TodoService {
 		todoList.add(new Todo(2, "shoron", "Do some home workuout and running", new Date(), false));
 		todoList.add(new Todo(3, "shoron", "Go to office for work", new Date(), false));
 		todoList.add(new Todo(1, "hasan", "Learn Java", new Date(), false));
-	}
+	}	
 	
 	
 	public void addTodo(String name, String desc, Date targetDate, boolean isDone) {
@@ -36,8 +36,9 @@ public class TodoService {
 				iterate.remove();
 			}
 		}
-	}
-
+	}	
+	
+	
 	public List<Todo> retrieveTodos(String user) {
 		List<Todo> listOfTodos = new ArrayList<Todo>();
 		for (Todo todo : todoList) {

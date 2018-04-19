@@ -39,7 +39,7 @@ public class TodoController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
-
+	
 	
 	// Welcome Page
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -105,7 +105,8 @@ public class TodoController {
 
 		model.clear(); // for not letting any extra parameter
 		return "redirect:/listtodo";
-	}
+	}	
+		
 
 	// delete todo
 	@RequestMapping(value = "/deletetodo", method = RequestMethod.GET)
@@ -115,17 +116,21 @@ public class TodoController {
 		redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 		model.clear();
 		return "redirect:/listtodo";
-	}
+	}	
+	
+	
 
 	// update todo page
 	@RequestMapping(value = "/updatetodo", method = RequestMethod.GET)
 	public String getSingleTodo(ModelMap model, @RequestParam int id) {
 		Todo todo = todoService.retrieveSingleTodo(id);
 		model.clear();
+		model.addAttribute("isDoneCheck", todo.isDone());
 		model.addAttribute("todo", todo);
 		return "update-todo";
 	}
-
+	
+	
 	// update todo
 	@RequestMapping(value = "/updatetodo", method = RequestMethod.POST)
 	public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result,

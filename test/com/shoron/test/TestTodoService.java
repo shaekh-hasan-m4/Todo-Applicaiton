@@ -31,6 +31,8 @@ public class TestTodoService extends TestCase {
 		todoService=new TodoService();
 	}
 	
+	
+	
 	@Test
 	public void testRetriveTodo(){			
 		List<Todo> check=todoService.retrieveTodos("shoron");
@@ -47,8 +49,8 @@ public class TestTodoService extends TestCase {
 	@Test
 	public void testAddTodo(){		
 		todoService.addTodo("shoron", "hello_ world", new Date(0), true);
-		List<Todo> check=todoService.retrieveTodos("shoron");
-		assertEquals(4,check.size());
+		List<Todo> check = todoService.retrieveTodos("shoron");
+		assertEquals(4, check.size());
 	}
 	
 	@Test

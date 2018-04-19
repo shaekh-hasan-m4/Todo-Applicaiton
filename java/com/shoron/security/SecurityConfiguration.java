@@ -20,15 +20,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
 //		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
 	}		
-	
-	
+		
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/login")
 		.permitAll()
-		.antMatchers("/", "/*todo*/**")
+		.antMatchers("/", "/*todo*/**")		
 				.access("hasRole('USER')")
 				.and()
 				.formLogin()
