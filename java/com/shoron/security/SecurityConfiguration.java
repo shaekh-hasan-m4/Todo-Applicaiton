@@ -22,9 +22,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser("shoron").password("shoron").roles("USER");
 		
 		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
+<<<<<<< HEAD
 
 	}		
 			
+=======
+//		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
+	}		
+	
+	
+	
+>>>>>>> 5e85ac7980981d4cd4b9da47cbdd4c40bfd6ac7b
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		

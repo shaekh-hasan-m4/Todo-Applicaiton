@@ -2,6 +2,7 @@
 <html lang = "en" xmlns = "http://www.w3.org/1999/xhtml"
 	xmlns:th = "http://www.thymeleaf.org" >
 
+<<<<<<< HEAD
 	<head>
 	
 		<meta charset = "UTF-8" />
@@ -90,4 +91,56 @@
 		
 	</body>
 	
+=======
+	<script type="text/javascript">
+    function validateDateCheckbox() {
+        if (document.getElementById('dateCheckboxCheck').checked) {
+            document.getElementById("inputTargetDateId").removeAttribute("required");
+            document.getElementById("inputTargetDateId").setAttribute("readonly", "readonly");
+           
+        } else {   
+            document.getElementById("inputTargetDateId").removeAttribute("readonly");
+        	  document.getElementById("inputTargetDateId").setAttribute("required", "required");
+           
+        }
+    }
+    </script>
+</head>
+<body>
+	<span th:include="/templates/navigation :: #navigationId"></span>
+	<div class="container">
+		<h1>Add a todo</h1>
+
+		<form action="#" th:action="@{/addtodo/}" th:object="${todo}"
+			method="post">
+			<fieldset class="form-group">
+				<label>Description</label> <input type="text"
+					th:field="*{description}" class="form-control" required="required" />
+				<p class="text-warning" th:if="${#fields.hasErrors('description')}"
+					th:errors="*{description}"></p>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<label>Target Date</label> <input type="date"
+					th:field="*{targetDate}" class="form-control" id="inputTargetDateId" required="required" />
+				<p class="text-warning" th:if="${#fields.hasErrors('targetDate')}"
+					th:errors="*{targetDate}"></p>
+			</fieldset>
+			
+			<fieldset class="form-check">
+				<input type="checkbox" class="form-check-input" id="dateCheckboxCheck" th:field="*{Done}"  onclick="validateDateCheckbox()"/>
+				<label class="form-check-label" for="dateCheckboxCheck">Is your work done?</label>
+			</fieldset>
+
+			<p>
+				<input class="btn btn-success" type="submit" value="Submit" /> <input
+					class="btn btn-warning" type="reset" value="Reset" />
+			</p>
+		</form>
+
+	</div>
+	<script th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"></script>
+</body>
+>>>>>>> 5e85ac7980981d4cd4b9da47cbdd4c40bfd6ac7b
 </html>

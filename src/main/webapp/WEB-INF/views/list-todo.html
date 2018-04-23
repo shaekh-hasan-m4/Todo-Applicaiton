@@ -24,6 +24,7 @@
 	
 			<br/>
 			
+<<<<<<< HEAD
 			<table class = "table table-striped">
 			
 				<tr>
@@ -38,6 +39,18 @@
 					
 					<th></th>
 				</tr>
+=======
+				<th>Description</th>
+				<th>Target Date</th>
+				<th>Is Complete?</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr th:each="todo : ${todoList}">
+				
+				<td th:text="${todo.description}"></td>
+				<td th:text="${todo.Done} ? '-/-/-' : ${#dates.format(todo.targetDate, 'dd-MM-yyyy')} "></td>
+>>>>>>> 5e85ac7980981d4cd4b9da47cbdd4c40bfd6ac7b
 
 				<tbody>
 				
