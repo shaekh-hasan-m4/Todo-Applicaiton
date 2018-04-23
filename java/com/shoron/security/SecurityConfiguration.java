@@ -14,16 +14,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		  BCryptPasswordEncoder encoder = passwordEncoder();
-		auth.inMemoryAuthentication().withUser("shoron").password("shoron").roles("USER");
-		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
-//		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
-	}		
+	public void configureGlobalSecurity(AuthenticationManagerBuilder auth)
+			throws Exception {
 		
-	
+		BCryptPasswordEncoder encoder = passwordEncoder();
+		  
+		auth.inMemoryAuthentication().withUser("shoron").password("shoron").roles("USER");
+		
+		auth.inMemoryAuthentication().withUser("hasan").password("hasan").roles("USER");
+
+	}		
+			
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
 		http.authorizeRequests()
 		.antMatchers("/login")
 		.permitAll()
@@ -33,8 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.formLogin()
 				.loginPage("/login");
 	}
-	
-	
+		
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

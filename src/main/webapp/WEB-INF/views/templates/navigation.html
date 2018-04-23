@@ -1,18 +1,26 @@
 <div id="navigationId">
 
 	<nav role="navigation" class="navbar navbar-default">
-	<div class="">
-		<a th:href="@{/}" class="navbar-brand">My todo App</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav menu-link">
-			<li class="checkhere"><a th:href="@{/}">Home</a></li>
-			<li class="checkhere"><a th:href="@{/listtodo}">Todos</a></li>
 
-		</ul>
-		<ul class="nav navbar-right">
-			<li><a th:href="@{/logout}">Logout</a></li>
-		</ul>
-	</div>
-</nav>
+		<div class="">
+			<a th:href="@{/}" class="navbar-brand">My todo App</a>
+		</div>
+
+		<div class="navbar-collapse">
+
+			<ul class="nav navbar-nav menu-link">
+
+				<li class="checkhere"><a th:href="@{/}">Home</a></li>
+				<li class="checkhere"><a th:href="@{/listtodo}">Todos</a></li>
+
+			</ul>
+
+			<ul class="nav navbar-right">
+				<li><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+
+		</div>
+
+	</nav>
+	
 </div>

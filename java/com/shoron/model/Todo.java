@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Todo {
 
 	private int id;
+	
 	private String user;
 	
 	@Size(min=6,message="Enter atleast 6 charecters")
@@ -17,13 +18,13 @@ public class Todo {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date targetDate;
+	
 	private boolean isDone;
 
 	public Todo(){
 		
 	}
-	
-	
+		
 	public Todo(int id, String user, String description, Date targetDate, boolean isDone) {
 		super();
 		this.id = id;
@@ -75,7 +76,8 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", user=" + user + ", description=" + description + ", targetDate=" + targetDate
+		return "Todo [id=" + id + ", user=" + user + 
+				", description=" + description + ", targetDate=" + targetDate
 				+ ", isDone=" + isDone + "]";
 	}
 

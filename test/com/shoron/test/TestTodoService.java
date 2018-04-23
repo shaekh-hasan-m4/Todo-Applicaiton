@@ -24,40 +24,48 @@ public class TestTodoService extends TestCase {
 	
 	@Mock
 	TodoService todoService;	
-//	TodoService todoService=mock(TodoService.class);
-	
+
 	@Before
 	public void setUp(){
-		todoService=new TodoService();
-	}
-	
-	
-	
+		todoService = new TodoService();
+	}	
+		
 	@Test
-	public void testRetriveTodo(){			
-		List<Todo> check=todoService.retrieveTodos("shoron");
+	public void testRetriveTodo(){	
+		
+		List<Todo> check = todoService.retrieveTodos("shoron");
+		
 		assertEquals(3,check.size());
 	}
 	
 	@Test
-	public void testDeleteTodo(){		
+	public void testDeleteTodo(){	
+		
 		todoService.deleteTodo(3);
-		List<Todo> check=todoService.retrieveTodos("shoron");
+		
+		List<Todo> check = todoService.retrieveTodos("shoron");
+		
 		assertEquals(3,check.size());
 	}
 	
 	@Test
 	public void testAddTodo(){		
 		todoService.addTodo("shoron", "hello_ world", new Date(0), true);
+		
 		List<Todo> check = todoService.retrieveTodos("shoron");
+		
 		assertEquals(4, check.size());
 	}
 	
 	@Test
 	public void testUpdateTodo(){
-		Todo todo=new Todo(3, "shoron", "hello y", new Date(), true);
+		
+		Todo todo = new Todo(3, "shoron", "hello y", new Date(), true);
+		
 		todoService.updateTodo(todo);
+		
 		List<Todo> check=todoService.retrieveTodos("shoron");
+		
 		assertEquals(4,check.size());
 	}
 }
